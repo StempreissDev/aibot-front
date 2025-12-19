@@ -1,73 +1,97 @@
-# React + TypeScript + Vite
+Entendido. Aquí tienes el contenido completo para tu documentación. Está redactado en texto plano y limpio para que puedas copiarlo y pegarlo directamente donde prefieras (un archivo de texto, un Word o el cuerpo del README), incluyendo la sección crítica de **Configuración** explicada detalladamente.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+* * * * *
 
-Currently, two official plugins are available:
+**PROYECTO: AI SALES ASSISTANT (FRONTEND)** **Manual de Instalación y Configuración**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**DESCRIPCIÓN GENERAL** Este proyecto constituye la interfaz de usuario (Frontend) para la Prueba Técnica "Full Stack AI Chat". Desarrollada con React, TypeScript y Vite, esta aplicación simula un chat de ventas inteligente que se comunica en tiempo real con una API Backend.
 
-## React Compiler
+**REQUISITOS PREVIOS** Antes de iniciar, asegúrate de tener instalado el siguiente software en tu equipo:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1.  Node.js (Versión 16 o superior).
 
-## Expanding the ESLint configuration
+2.  NPM (Gestor de paquetes incluido con Node.js).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* * * * *
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**GUÍA DE INSTALACIÓN PASO A PASO**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+**Paso 1: Instalación de Dependencias** El proyecto requiere una serie de librerías externas (React, Tailwind, Axios, etc.) para funcionar.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1.  Abre tu terminal o línea de comandos.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2.  Navega hasta la carpeta raíz del proyecto (`ai-chat-frontend`).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3.  Ejecuta el siguiente comando para descargar e instalar todo automáticamente:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+npm install
+
+* * * * *
+
+**Paso 2: Configuración del Entorno (IMPORTANTE)** Para que el Frontend pueda comunicarse con el Backend (NestJS), es necesario configurar la dirección de la API. Sin este paso, el inicio de sesión no funcionará.
+
+1.  En la carpeta raíz del proyecto (al mismo nivel que el archivo `package.json`), crea un nuevo archivo llamado: `.env`
+
+2.  Abre ese archivo `.env` con cualquier editor de texto.
+
+3.  Pega la siguiente línea de código dentro del archivo:
+
+VITE_API_URL=http://localhost:3000
+
+*Nota: Si tu backend está ejecutándose en un puerto diferente al 3000, cambia el número en la URL anterior.*
+
+* * * * *
+
+**Paso 3: Ejecución del Proyecto** Una vez instaladas las dependencias y configurado el entorno, puedes iniciar el servidor de desarrollo.
+
+1.  En la terminal, ejecuta el comando:
+
+npm run dev
+
+1.  La terminal mostrará que el servidor está listo. Por lo general, la dirección será: http://localhost:5173
+
+2.  Abre esa dirección en tu navegador web (Chrome, Edge, Firefox).
+
+* * * * *
+
+**USO DE LA APLICACIÓN**
+
+1.  **Login:** Al abrir la aplicación, serás redirigido a la pantalla de inicio de sesión. Ingresa tus credenciales o utiliza el enlace de registro.
+
+2.  **Registro:** Si no tienes cuenta, ve a la opción "Regístrate aquí", completa el formulario y serás redirigido al login.
+
+3.  **Chat:** Una vez autenticado, accederás al Chat. Escribe un mensaje en la barra inferior y presiona "Enviar". El mensaje se mostrará inmediatamente (interfaz optimista) y recibirás la respuesta de la IA en unos segundos.
+
+* * * * *
+
+**ESTRUCTURA TÉCNICA**
+
+El código fuente se encuentra en la carpeta `/src` y está organizado de la siguiente manera:
+
+-   **components/:** Contiene elementos visuales reutilizables.
+
+-   **pages/:** Contiene las vistas principales (LoginPage, RegisterPage, ChatPage).
+
+-   **services/:** Contiene la configuración de Axios (`api.ts`) y los interceptores de seguridad para el manejo de Tokens JWT.
+
+-   **types/:** Definiciones de TypeScript para asegurar la integridad de los datos.
+
+**Tecnologías Utilizadas:**
+
+-   React + TypeScript + Vite
+
+-   Tailwind CSS (Estilos)
+
+-   Axios (Conexión HTTP)
+
+-   React Router DOM (Navegación)
+
+-   React Hook Form (Manejo de formularios)
+
+* * * * *
+
+**SOLUCIÓN DE PROBLEMAS COMUNES**
+
+-   **Error "VITE_API_URL is not defined":** Asegúrate de haber creado el archivo `.env` en la raíz y no dentro de `src`. Reinicia la terminal después de crear el archivo.
+
+-   **Estilos rotos:** Si la interfaz se ve sin formato, asegúrate de que el servidor de desarrollo (`npm run dev`) esté corriendo y no haya errores en la consola relacionados con Tailwind.

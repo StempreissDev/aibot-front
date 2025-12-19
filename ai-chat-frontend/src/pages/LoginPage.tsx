@@ -27,10 +27,17 @@ export const LoginPage = () => {
       alert("Credenciales incorrectas o error en el servidor");
     }
   };
-
   return (
+    // CLAVE DEL ÉXITO: 
+    // min-h-screen: Obliga a ocupar el 100% de la altura de la ventana.
+    // flex items-center justify-center: Centra el contenido (la tarjeta) en medio.
+    // bg-gray-100: El color de fondo gris claro de toda la página.
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      
+      {/* ESTA ES LA TARJETA (CARD) */}
+      {/* w-full max-w-md: Ancho completo pero con tope (tamaño tarjeta) */}
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        
         <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Iniciar Sesión</h2>
         
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -74,4 +81,3 @@ export const LoginPage = () => {
     </div>
   );
 };
-
